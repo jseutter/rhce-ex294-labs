@@ -25,4 +25,6 @@ github-pat.txt
 *-artifact-*.json
 # Ignore Ansible collections deep inside any exercise folder
 **/collections/
+# Ignore Ansible role/collection tarballs
+*.tar.gz
 
