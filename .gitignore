@@ -19,3 +19,10 @@
 .cache/
 .viminfo
 github-pat.txt
+
+
+# Ignore Ansible/Lab artifacts in any directory
+*-artifact-*.json
+# Ignore Ansible collections deep inside any exercise folder
+**/collections/
+
