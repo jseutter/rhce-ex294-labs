@@ -1,0 +1,12 @@
+---
+network_state:
+  interfaces:
+    - name: eth1
+      type: ethernet
+      state: up
+      ipv4:
+        enabled: true
+        address:
+          - ip: 172.25.250.40
+            prefix-length: 24
+        dhcp: false

@@ -1,0 +1,21 @@
+---
+- name: repo playbook
+  hosts: webservers
+  tasks:
+    - name: Add yum repo
+      ansible.builtin.yum_repository:
+        name: example-internal
+        description: Example Inc. Internal YUM repo
+        baseurl: http://materials.example.com/yum/repository
+        gpgcheck: true
+        file: example
+
+    - name: Trust rpm key
+      ansible.builtin.rpm_key:
+        state: present
+        key: http://materials.example.com/yum/repository/RPM-GPG-KEY-example
+
+    - name: Install rhelver package
+      ansible.builtin.dnf:
+        state: present
+        name: rhelver

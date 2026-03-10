@@ -1,0 +1,15 @@
+---
+storage_pools:
+  - name: apache-vg
+    type: lvm
+    disks:
+      - vdb
+    volumes:
+      - name: content-lv
+        size: 64m
+        fs_type: xfs
+        mount_point: "/var/www"
+      - name: logs-lv
+        size: 128m
+        fs_type: xfs
+        mount_point: "/var/log/httpd"

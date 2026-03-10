@@ -1,0 +1,17 @@
+---
+- name: Add users
+  hosts: webservers
+  vars_files:
+    - vars/user_vars.yml
+  tasks:
+    - name: Add group
+      ansible.builtin.group:
+        name: webadmin
+    - name: Add user
+      ansible.builtin.user:
+        name: "{{ item.username }}"
+        groups:
+          - "{{ item.groups }}"
+        append: yes
+      loop: "{{ users }}"
+
