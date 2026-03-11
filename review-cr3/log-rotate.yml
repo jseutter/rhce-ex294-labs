@@ -1,0 +1,13 @@
+---
+- name: logrotate
+  hosts: webservers
+  tasks:
+    - name: create cronjob
+      ansible.builtin.cron:
+        name: "rotate web"
+        user: devops
+        job: logrotate -f /etc/logrotate.d/httpd
+        day: "*"
+        hour: "0"
+        minute: "0"
+        cron_file: rotate_web

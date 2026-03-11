@@ -1,0 +1,14 @@
+---
+storage_pools:
+  - name: vg_web
+    disks:
+      - /dev/vdb
+    volumes:
+      - name: lv_content
+        size: 128 MiB
+        fs_type: xfs
+        mount_point: "/var/www/html/content"
+      - name: lv_uploads
+        size: 256 MiB
+        fs_type: xfs
+        mount_point: "/var/www/html/uploads"

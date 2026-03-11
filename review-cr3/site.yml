@@ -1,0 +1,10 @@
+---
+- name: storage
+  ansible.builtin.import_playbook: storage.yml
+- name: dev-users
+  ansible.builtin.import_playbook: dev-users.yml
+- name: network
+  ansible.builtin.import_playbook: network.yml
+- name: logrotate
+  ansible.builtin.import_playbook: log-rotate.yml
+

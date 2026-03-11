@@ -1,0 +1,26 @@
+---
+- name: dev-users
+  hosts: webservers
+  vars_files:
+    pass-vault.yml
+  tasks:
+    - name: add webdev group
+      ansible.builtin.group:
+        name: webdev
+
+    - name: add developer user
+      ansible.builtin.user:
+        name: developer
+        password: "{{ pwhash }}"
+        groups: webdev
+       
+    - name: sudoers
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/webdev
+        state: present
+        regexp: '^%webdev'
+        line: "%webdev        ALL=(ALL)       NOPASSWD: ALL" 
+        validate: /usr/sbin/visudo -cf %s
+        create: yes
+
+

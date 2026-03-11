@@ -1,0 +1,8 @@
+---
+- name: storage
+  hosts: webservers
+  vars_files:
+    group_vars/webserver_vars.yml
+  roles:
+    - name: redhat.rhel_system_roles.storage
+
