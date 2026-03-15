@@ -1,0 +1,16 @@
+---
+- name: q4
+  hosts: servera.lab.example.com
+  become: true
+  tasks:
+    - name: stat a source file, which includes a checksum
+      ansible.builtin.stat:
+        path: /etc/passwd
+      register: stat
+
+    - name: debug
+      ansible.builtin.debug:
+        var: stat.stat.checksum
+      when: stat.stat.checksum == stat.stat.checksum
+
+

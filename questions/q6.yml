@@ -1,0 +1,21 @@
+---
+- name: q6
+  hosts: servera.lab.example.com
+  become: true
+  tasks:
+    - name: install python 3.8 on Ubuntu
+      ansible.builtin.apt:
+        name: python-3.8
+        state: present
+      when: ansible_os_family == 'Debian'
+
+    - name: install python 38 on rhel
+      ansible.builtin.dnf:
+        name: python38
+        state: present
+      when: ansible_os_family == 'RedHat'
+
+
+
+
+

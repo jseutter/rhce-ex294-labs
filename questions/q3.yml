@@ -1,0 +1,18 @@
+---
+- name: q3
+  hosts: servera.lab.example.com
+  become: true
+  tasks:
+    - name: Exclude a package from upgrading
+      ansible.builtin.dnf:
+        name: '*'
+        exclude:
+          - '*kernel*'
+        state: latest
+        update_only: yes
+      register: dnf_update
+
+    - name: debug
+      ansible.builtin.debug:
+        var: dnf_update
+

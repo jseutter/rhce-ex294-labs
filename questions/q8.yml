@@ -1,0 +1,19 @@
+---
+- name: q8
+  hosts: servera.lab.example.com
+  become: true
+  tasks:
+    - name: this unreliable task we want to retry
+      ansible.builtin.command:
+        cmd: ls -l
+      retries: 5
+      delay: 10
+      register: result
+      until: result.rc == 0
+
+
+
+
+
+
+

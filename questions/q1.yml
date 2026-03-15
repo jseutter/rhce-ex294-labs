@@ -1,0 +1,16 @@
+---
+- name: doit
+  hosts: servera.lab.example.com
+  tasks:
+    - name: use first_found
+      ansible.builtin.set_fact:
+        _found_file: "{{ lookup('ansible.builtin.first_found', findme) }}"
+      vars:
+        findme:
+          - index.html
+
+    - name: foo
+      ansible.builtin.debug:
+        msg: "found file has the value {{ _found_file }}"
+
+

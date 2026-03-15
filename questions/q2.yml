@@ -1,0 +1,17 @@
+---
+- name: q2
+  hosts: servera.lab.example.com
+  tasks:
+    - name: df -h
+      ansible.builtin.command:
+        cmd: df -h
+      register: disk_usage
+
+    - name: something based on disk fullnes
+      ansible.builtin.debug:
+        msg: "going to do something on {{ ansible_hostname }}"
+      when: disk_usage.stdout.find('80%') != -1
+
+    - name: debug
+      ansible.builtin.debug:
+        var: disk_usage
